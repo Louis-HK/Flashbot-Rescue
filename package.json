@@ -1,0 +1,26 @@
+{
+  "name": "flashbot-rescue",
+  "version": "1.0.0",
+  "description": "Flashbots ERC20 rescue bot",
+  "main": "flashbot.js",
+  "scripts": {
+    "start": "node flashbot.js",
+    "healthcheck": "node healthcheck.js"
+  },
+  "keywords": [
+    "flashbots",
+    "ethers",
+    "ethereum",
+    "erc20",
+    "rescue"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@flashbots/ethers-provider-bundle": "^1.0.0",
+    "dotenv": "^17.2.1",
+    "ethers": "^6.7.1",
+    "pm2": "^5.3.0"
+  }
+}
