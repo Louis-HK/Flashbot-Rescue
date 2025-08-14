@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flashbot .env Update</title>
+</head>
+<body>
+<h2>Update Flashbot .env</h2>
+<form id="envForm">
+  <label>PRIVATE_KEY: <input type="text" name="PRIVATE_KEY"></label><br>
+  <label>FUNDER_WALLET_PK: <input type="text" name="FUNDER_WALLET_PK"></label><br>
+  <label>RPC_URL: <input type="text" name="RPC_URL" value="http://127.0.0.1:8545"></label><br>
+  <label>SAFE_ADDRESS: <input type="text" name="SAFE_ADDRESS" value="0x91a7c0acef1fC528CE695513A648490C8242191A"></label><br>
+  <label>TOKEN_ADDRESS: <input type="text" name="TOKEN_ADDRESS" value="0xdAC17F958D2ee523a2206206994597C13D831ec7"></label><br>
+  <label>CHAIN_ID: <input type="text" name="CHAIN_ID" value="1"></label><br>
+  <button type="submit">Update .env</button>
+</form>
+
+<script>
+const API_TOKEN = "ebde35d7c2304522d9b51f06208b08dde6f7112fbf414b47e716f29c2e9782ea"; // same token as in server
+
+document.getElementById('envForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+
+  const res = await fetch('http://95.217.140.174:4001/update-env', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + API_TOKEN
+    },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+  alert(JSON.stringify(result));
+});
+</script>
+</body>
+</html>
